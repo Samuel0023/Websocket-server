@@ -7,7 +7,8 @@ const socketController = (socket) => {
     });
 
     socket.on('enviar-mensaje', (payload) => {
-        console.log('enviar mensaje del server recibido: ', payload);
+
+        socket.broadcast.emit('enviar-mensaje', payload);
     });
 }
 

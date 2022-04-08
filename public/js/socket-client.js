@@ -19,15 +19,19 @@ socket.on('disconnect', () => {
     lblOffline.style.display = '';
 });
 
-
+socket.on('enviar-mensaje', (payload) => {
+    console.log(payload);
+})
 btnEnviar.addEventListener('click', () => {
     const mensaje = txtMensaje.value;
-    console.log(mensaje);
     let payload = {
         mensaje,
         id: '123123',
         fecha: new Date().getTime()
-    }
-    socket.emit('enviar-mensaje', payload);
+    };
+
+    socket.emit('enviar-mensaje', payload, (id) => {
+        console.log('Desde el server', id);
+    });
 });
 console.log(socket);
