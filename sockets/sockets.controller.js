@@ -6,8 +6,11 @@ const socketController = (socket) => {
         console.log('Cliente Desconectado', socket.id);
     });
 
-    socket.on('enviar-mensaje', (payload) => {
+    socket.on('enviar-mensaje', (payload, callback) => {
+        const id = 123456;
+        callback(id);
 
+        /// para emitir a todos los clientes conectados
         socket.broadcast.emit('enviar-mensaje', payload);
     });
 }
