@@ -34,4 +34,3 @@ btnEnviar.addEventListener('click', () => {
         console.log('Desde el server', id);
     });
 });
-console.log(socket);
